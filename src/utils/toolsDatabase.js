@@ -603,7 +603,7 @@ export const toolsDatabase = [
     name: "Leonardo AI",
     url: "https://leonardo.ai",
     shortDescription: "Platform for image, concept art, and video generation",
-    supportType: ["visual","video"]
+    supportType: ["visual","video"], 
     category: ["image generation", "video generation & editing"],
     aiDependency: "ai-only",
     price: "freemium",
