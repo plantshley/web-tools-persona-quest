@@ -27,10 +27,25 @@ code {
   50% { opacity: 1; transform: scale(1.2); }
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .float {
   animation: float 3s ease-in-out infinite;
 }
 
 .sparkle {
   animation: sparkle 2s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
 }

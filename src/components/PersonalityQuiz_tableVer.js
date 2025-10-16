@@ -2628,13 +2628,26 @@ const PersonalityQuizApp = () => {
 				<StarField />
 				<div className="max-w-5xl w-full mx-auto z-10 px-4">
 					<div className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-10">
-									<h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 font-silkscreen px-4 mx-auto" style={{ maxWidth: '100%' }}>
-										<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full">
-											<WaveReveal text="Universe of Tools" mode="letter" delay={0.05} duration={0.6} />
-										</div>
-										<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full">
-											<WaveReveal text="Persona Quest" mode="letter" delay={0.05} duration={0.6} />
-										</div>
+									<h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 font-silkscreen px-4 mx-auto" style={{ maxWidth: '100%' }}>
+										{windowWidth >= 640 ? (
+											<>
+												<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full">
+													<WaveReveal text="Universe of Tools" mode="letter" delay={0.05} duration={0.6} />
+												</div>
+												<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full">
+													<WaveReveal text="Persona Quest" mode="letter" delay={0.05} duration={0.6} />
+												</div>
+											</>
+										) : (
+											<>
+												<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full animate-fade-in">
+													Universe of Tools
+												</div>
+												<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full animate-fade-in" style={{ animationDelay: '0.3s' }}>
+													Persona Quest
+												</div>
+											</>
+										)}
 									</h1>
 						<p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto font-atkinson px-2">
 							<span className="italic text-xs sm:text-sm">Beam through the glittering universe of web and AI tools to discover the perfect ones for your creative & academic adventures!</span>
@@ -2713,9 +2726,9 @@ const PersonalityQuizApp = () => {
 												{/* Orbiting Planets (no cards attached) */}
 												<div className="pointer-events-auto" style={{ touchAction: 'manipulation', userSelect: 'none', zIndex: 10 }}>
 													<OrbitingItems
-														radiusPx={windowWidth < 400 ? 95 : windowWidth < 640 ? 115 : windowWidth < 768 ? 170 : 240}
+														radiusPx={windowWidth < 400 ? 100 : windowWidth < 640 ? 120 : windowWidth < 768 ? 200 : 250}
 														pauseOnHover={false}
-														className="h-[260px] w-[260px] xs:h-[300px] xs:w-[300px] sm:h-[400px] sm:w-[400px] md:h-[500px] md:w-[500px] lg:h-[550px] lg:w-[550px]"
+														className="h-[280px] w-[280px] xs:h-[320px] xs:w-[320px] sm:h-[480px] sm:w-[480px] md:h-[520px] md:w-[520px] lg:h-[550px] lg:w-[550px]"
 														items={quizQuestions[currentQuestion].options.map((option, idx) => {
 															const planetIcons = [visualisIcon, textaraIcon, codionIcon, audioniaIcon, dataralisIcon, presentiraIcon, dimensioIcon, researaIcon];
 															const isSelected = answers[currentQuestion] === idx;
@@ -2733,7 +2746,7 @@ const PersonalityQuizApp = () => {
 																		}
 																		setAnswers(newAnswers);
 																	}}
-																	className={`w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full bg-gradient-to-br from-purple-400/40 to-cyan-400/40 flex items-center justify-center p-2.5 xs:p-3 sm:p-3.5 md:p-4 lg:p-5 transition-all duration-300 ${isSelected ? 'scale-110' : 'hover:scale-105'} pointer-events-auto`}
+																	className={`w-16 h-16 xs:w-18 xs:h-18 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full bg-gradient-to-br from-purple-400/40 to-cyan-400/40 flex items-center justify-center p-3 xs:p-3.5 sm:p-4 md:p-5 lg:p-6 transition-all duration-300 ${isSelected ? 'scale-110' : 'hover:scale-105'} pointer-events-auto`}
 																	style={{
 																		boxShadow: isSelected
 																			? '0 0 30px 10px rgba(34, 211, 238, 0.8), 0 0 60px 20px rgba(167, 139, 250, 0.6)'
