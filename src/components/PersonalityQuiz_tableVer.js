@@ -446,7 +446,6 @@ const branchingQuestions = {
 				"content-creator": 3,
 				"video-creator": 4,
 				"strengths-video-generation": 5,
-				"ai-enthusiast": 2
 			}
 		},
 		{
