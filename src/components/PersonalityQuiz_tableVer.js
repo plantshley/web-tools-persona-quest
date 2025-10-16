@@ -351,8 +351,10 @@ const branchingQuestions = {
 			text: "The Speech Sprite, who transforms text to speech and speech to text with a cosmic accent.",
 			scores: {
 				"strengths-speech-tools": 5,
-				"category-speech & voice interaction": 3,
-				"supportType-audio": 5
+				"category-speech & voice interaction": 1,
+				"supportType-audio": 1, 
+				"strengths-TTS": 2,
+				"strengths-STT": 2
 
 			}
 		},
@@ -848,7 +850,8 @@ const baseQuizQuestions = [
 					"rapid-prototyper": 1,
 					"price-freemium": 2,
 					"freeTierAccess-robust": 1,
-					"price-free": 2
+					"price-free": 2,
+					 "timePressure-low": 1
 
 				}
 			}
@@ -959,8 +962,8 @@ const baseQuizQuestions = [
 			{
 				text: "The rush of blazing through challenges at light speed to reach my goal",
 				scores: {
-					"quick-starter": 1,
-					"timePressure-low": 1, 
+					"rapid-prototyper": 1,
+					//"timePressure-low": 1, 
 					"weaknesses-learning curve": 1
 				}
 			},
@@ -1085,7 +1088,8 @@ const getDotColor = (tool, questionIndex, userAnswer, quizQuestions) => {
 					return tool.category?.toLowerCase().includes(reqCategory.toLowerCase());
 				});
 
-				// Tool must match ALL specified requirement types
+				// Tool must match at least ONE requirement from EACH specified requirement type
+				// (e.g., if creature specifies strengths AND personas, tool needs at least one of each)
 				if (hasRequiredStrength && hasRequiredPersona && hasRequiredSupportType && hasRequiredCategory) {
 					return '🌕'; // Match
 				} else {
@@ -1189,11 +1193,13 @@ const getDotColor = (tool, questionIndex, userAnswer, quizQuestions) => {
 		if (userWantsPaid) {
 			if (toolPrice === 'price-paid') {
 				return '🌕'; // Match - paid tool for paid preference
-			} else if (toolPrice === 'price-freemium') {
-				// Freemium is acceptable for paid users (they can pay if they want)
-				return '🌕';
+			} else if (toolPrice === 'price-free' || (toolPrice === 'price-freemium' && toolFreeTier === 'freeTierAccess-robust')) {
+				// Free or freemium with robust free tier - low match for paid preference
+				return '🌑';
+			} else {
+				// All other cases (freemium with limited tiers) - moderate match
+				return '🌓';
 			}
-			// price-free will fall through to opposites check below
 		}
 
 		// For price-freemium users (if they exist in the quiz)
@@ -1203,8 +1209,46 @@ const getDotColor = (tool, questionIndex, userAnswer, quizQuestions) => {
 		}
 
 		// If no match found, will fall through to check opposites, then neutral
+	} else if (questionIndex === 7) {
+		// Special handling for Q8 (time pressure)
+		const userWantsHighTimePressure = userScoreKeys.includes('timePressure-high');
+		const userWantsMediumTimePressure = userScoreKeys.includes('timePressure-medium');
+		const userWantsLowTimePressure = userScoreKeys.includes('timePressure-low');
+
+		if (userWantsHighTimePressure) {
+			// User chose "Craft from cosmic dust" - wants tools that match high time investment
+			// Check if tool has high time pressure OR advanced complexity
+			if (toolAttributes.includes('timePressure-high') || tool.complexity === 'advanced') {
+				return '🌕'; // Match - tool requires time/complexity
+			} else {
+				return '🌓'; // Neutral - tool doesn't match high time pressure preference
+			}
+		}
+
+		if (userWantsMediumTimePressure) {
+			// User wants medium time investment tools
+			if (toolAttributes.includes('timePressure-medium') || tool.complexity === 'intermediate') {
+				return '🌕'; // Match - tool has medium time pressure or intermediate complexity
+			} else {
+				return '🌓'; // Neutral - doesn't match medium preference
+			}
+		}
+
+		if (userWantsLowTimePressure) {
+			// User wants quick/easy tools - low time investment
+			if (toolAttributes.includes('timePressure-low') || tool.complexity === 'beginner') {
+				return '🌕'; // Match - tool is quick/easy
+			} else if (toolAttributes.includes('timePressure-high') || tool.complexity === 'advanced') {
+				return '🌑'; // Low Match - tool requires too much time for quick-start user
+			} else {
+				return '🌓'; // Neutral - medium complexity
+			}
+		}
+
+		// Fallback to neutral if no time pressure preference was found
+		return '🌓';
 	} else {
-		// For non-budget questions, use the standard matching logic
+		// For all other questions, use the standard matching logic
 		const hasMatch = userScoreKeys.some(userKey => {
 			// Direct match
 			if (toolAttributes.includes(userKey)) return true;
@@ -2063,47 +2107,17 @@ const PersonalityQuizApp = () => {
 			console.log(`  Strengths: ${tool.strengths.join(', ')}`);
 		});
 
-		// SCORE NORMALIZATION AND DIVERSITY
+		// SCORE NORMALIZATION
 		// Filter out tools with very low scores (poor matches)
 		const minScore = Math.max(...toolScores.map(t => t.score)) * 0.3; // At least 30% of top score
 		const viableTools = toolScores.filter(tool => tool.score >= minScore);
-		
+
 		// Sort by score
 		const sortedTools = viableTools.sort((a, b) => b.score - a.score);
-		
-		// Add diversity bonus to prevent too many similar tools
-		const diverseTools = [];
-		const usedCategories = new Set();
-		const usedComplexities = new Set();
-		
-		for (const tool of sortedTools) {
-			let diversityBonus = 0;
-			
-			// Bonus for different complexity levels
-			if (!usedComplexities.has(tool.complexity) && diverseTools.length > 0) {
-				diversityBonus += 1;
-			}
-			
-			// Apply diversity bonus
-			const adjustedTool = {
-				...tool,
-				score: tool.score + diversityBonus,
-				diversityBonus
-			};
-			
-			diverseTools.push(adjustedTool);
-			usedComplexities.add(tool.complexity);
-
-			// Get enough tools for the requested return count (with some buffer for diversity)
-			if (diverseTools.length >= Math.max(4, returnCount * 2)) break;
-		}
-
-		// Calculate compatibility percentages based on absolute match quality
-		const sortedDiverseTools = diverseTools.sort((a, b) => b.score - a.score);
 
 		// IMPORTANT: Always calculate min/max from top 10 tools for consistency
 		// This ensures the same percentages whether we're displaying 2 or 10 tools
-		const toolsForMinMax = sortedDiverseTools.slice(0, Math.min(10, sortedDiverseTools.length));
+		const toolsForMinMax = sortedTools.slice(0, Math.min(10, sortedTools.length));
 		const allRawPercentages = toolsForMinMax.map(t => {
 			const tScore = Math.max(0, t.score);
 			return (tScore / universalMaxPossibleScore) * 100;
@@ -2112,7 +2126,7 @@ const PersonalityQuizApp = () => {
 		const maxPercentage = Math.max(...allRawPercentages);
 
 		// Get the tools we'll actually return
-		const toolsToDisplay = sortedDiverseTools.slice(0, returnCount);
+		const toolsToDisplay = sortedTools.slice(0, returnCount);
 
 		// Calculate percentages using threshold-based hybrid scaling
 		const finalRecommendations = toolsToDisplay.map((tool, index) => {
@@ -2613,8 +2627,8 @@ const PersonalityQuizApp = () => {
 			}}>
 				<StarField />
 				<div className="max-w-5xl w-full mx-auto z-10 px-4">
-					<div className="text-center mb-6 sm:mb-8 md:mb-10">
-									<h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold mb-3 sm:mb-4 font-silkscreen px-4 mx-auto" style={{ maxWidth: '100%' }}>
+					<div className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-10">
+									<h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 font-silkscreen px-4 mx-auto" style={{ maxWidth: '100%' }}>
 										<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full">
 											<WaveReveal text="Universe of Tools" mode="letter" delay={0.05} duration={0.6} />
 										</div>
@@ -2652,24 +2666,24 @@ const PersonalityQuizApp = () => {
 												)}
 												{quizQuestions[currentQuestion].question}
 											</div>
-											<div className="relative w-full max-w-full h-[450px] sm:h-[550px] md:h-[650px] flex items-center justify-center overflow-hidden" style={{ userSelect: 'none' }}>
+											<div className="relative w-full max-w-full h-[380px] sm:h-[500px] md:h-[600px] lg:h-[650px] flex items-center justify-center overflow-visible px-4 sm:px-2" style={{ userSelect: 'none' }}>
 												{/* Center Content - Orbit icon or Card + GO button */}
 												<div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 10000 }}>
 													<div className="flex flex-col items-center justify-center" style={{ pointerEvents: 'none', userSelect: 'none' }}>
 														{typeof answers[currentQuestion] !== 'undefined' ? (
-															<div className="flex flex-col items-center" style={{ marginTop: windowWidth < 640 ? '1rem' : '2.5rem', pointerEvents: 'none', userSelect: 'none' }}>
+															<div className="flex flex-col items-center" style={{ marginTop: windowWidth < 400 ? '0.5rem' : windowWidth < 640 ? '0.75rem' : '2.5rem', pointerEvents: 'none', userSelect: 'none' }}>
 																{/* Card when planet selected */}
-																<div className="relative rounded-3xl p-3 sm:p-4 md:p-5 bg-white/20 backdrop-blur-md shadow-2xl text-center overflow-hidden flex flex-col items-center justify-center w-[160px] h-[130px] sm:w-[200px] sm:h-[160px] md:w-[230px] md:h-[180px]" style={{ zIndex: 1, pointerEvents: 'none', userSelect: 'none' }}>
+																<div className="relative rounded-2xl sm:rounded-3xl p-1.5 xs:p-2 sm:p-3 md:p-4 lg:p-5 bg-white/20 backdrop-blur-md shadow-2xl text-center overflow-hidden flex flex-col items-center justify-center w-[115px] h-[95px] xs:w-[130px] xs:h-[105px] sm:w-[170px] sm:h-[140px] md:w-[200px] md:h-[165px] lg:w-[230px] lg:h-[180px]" style={{ zIndex: 1, pointerEvents: 'none', userSelect: 'none' }}>
 																	<div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient opacity-50"></div>
-																	<h3 className="relative font-bold text-base sm:text-lg md:text-xl mb-1 sm:mb-2 text-white font-silkscreen">
+																	<h3 className="relative font-bold text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl mb-0.5 xs:mb-1 sm:mb-1.5 md:mb-2 text-white font-silkscreen leading-tight px-1">
 																		{quizQuestions[currentQuestion].options[answers[currentQuestion]].text.split(':')[0]}
 																	</h3>
-																	<p className="relative text-sm sm:text-base text-cyan-100 font-atkinson">
+																	<p className="relative text-[10px] xs:text-xs sm:text-sm md:text-base text-cyan-100 font-atkinson leading-tight px-1">
 																		{quizQuestions[currentQuestion].options[answers[currentQuestion]].text.split(':')[1]}
 																	</p>
 																</div>
-																{/* GO! button below card - overlapping and above */}
-																<div className="pointer-events-auto" style={{ marginTop: '-1.25rem', zIndex: 2, position: 'relative', touchAction: 'manipulation' }}>
+																{/* GO! button below card - slight overlap */}
+																<div className="pointer-events-auto" style={{ marginTop: windowWidth < 400 ? '-0.5rem' : windowWidth < 640 ? '-0.75rem' : '-1.25rem', zIndex: 2, position: 'relative', touchAction: 'manipulation', transform: windowWidth < 640 ? 'scale(0.85)' : 'scale(1)' }}>
 																	<AiButton
 																		onClick={() => {
 																			if (currentQuestion < quizQuestions.length - 1) {
@@ -2686,11 +2700,11 @@ const PersonalityQuizApp = () => {
 														) : (
 															/* Orbit icon with multi stars on all sides */
 															<div className="relative flex items-center justify-center" style={{ pointerEvents: 'none', userSelect: 'none' }}>
-																<img src={multiStarsGif} alt="stars" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain opacity-70 absolute" style={{ transform: 'rotate(90deg)', top: windowWidth < 640 ? '-25px' : '-35px', pointerEvents: 'none', userSelect: 'none' }} />
-																<img src={multiStarsGif} alt="stars" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain opacity-70 absolute" style={{ left: windowWidth < 640 ? '-25px' : '-35px', pointerEvents: 'none', userSelect: 'none' }} />
-																<img src={orbitIcon} alt="orbit" className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain relative z-10" style={{ pointerEvents: 'none', userSelect: 'none' }} />
-																<img src={multiStarsGif} alt="stars" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain opacity-70 absolute" style={{ right: windowWidth < 640 ? '-25px' : '-35px', pointerEvents: 'none', userSelect: 'none' }} />
-																<img src={multiStarsGif} alt="stars" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain opacity-70 absolute" style={{ transform: 'rotate(270deg)', bottom: windowWidth < 640 ? '-25px' : '-35px', pointerEvents: 'none', userSelect: 'none' }} />
+																<img src={multiStarsGif} alt="stars" className="w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 object-contain opacity-70 absolute" style={{ transform: 'rotate(90deg)', top: windowWidth < 400 ? '-22px' : windowWidth < 640 ? '-26px' : '-35px', pointerEvents: 'none', userSelect: 'none' }} />
+																<img src={multiStarsGif} alt="stars" className="w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 object-contain opacity-70 absolute" style={{ left: windowWidth < 400 ? '-22px' : windowWidth < 640 ? '-26px' : '-35px', pointerEvents: 'none', userSelect: 'none' }} />
+																<img src={orbitIcon} alt="orbit" className="w-20 h-20 xs:w-24 xs:h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 object-contain relative z-10" style={{ pointerEvents: 'none', userSelect: 'none' }} />
+																<img src={multiStarsGif} alt="stars" className="w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 object-contain opacity-70 absolute" style={{ right: windowWidth < 400 ? '-22px' : windowWidth < 640 ? '-26px' : '-35px', pointerEvents: 'none', userSelect: 'none' }} />
+																<img src={multiStarsGif} alt="stars" className="w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 object-contain opacity-70 absolute" style={{ transform: 'rotate(270deg)', bottom: windowWidth < 400 ? '-22px' : windowWidth < 640 ? '-26px' : '-35px', pointerEvents: 'none', userSelect: 'none' }} />
 															</div>
 														)}
 													</div>
@@ -2699,9 +2713,9 @@ const PersonalityQuizApp = () => {
 												{/* Orbiting Planets (no cards attached) */}
 												<div className="pointer-events-auto" style={{ touchAction: 'manipulation', userSelect: 'none', zIndex: 10 }}>
 													<OrbitingItems
-														radiusPx={windowWidth < 640 ? 150 : windowWidth < 768 ? 200 : 250}
+														radiusPx={windowWidth < 400 ? 95 : windowWidth < 640 ? 115 : windowWidth < 768 ? 170 : 240}
 														pauseOnHover={false}
-														className="h-[400px] w-[400px] sm:h-[480px] sm:w-[480px] md:h-[550px] md:w-[550px]"
+														className="h-[260px] w-[260px] xs:h-[300px] xs:w-[300px] sm:h-[400px] sm:w-[400px] md:h-[500px] md:w-[500px] lg:h-[550px] lg:w-[550px]"
 														items={quizQuestions[currentQuestion].options.map((option, idx) => {
 															const planetIcons = [visualisIcon, textaraIcon, codionIcon, audioniaIcon, dataralisIcon, presentiraIcon, dimensioIcon, researaIcon];
 															const isSelected = answers[currentQuestion] === idx;
@@ -2719,7 +2733,7 @@ const PersonalityQuizApp = () => {
 																		}
 																		setAnswers(newAnswers);
 																	}}
-																	className={`w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-purple-400/40 to-cyan-400/40 flex items-center justify-center p-4 sm:p-5 md:p-6 transition-all duration-300 ${isSelected ? 'scale-110' : 'hover:scale-105'} pointer-events-auto`}
+																	className={`w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full bg-gradient-to-br from-purple-400/40 to-cyan-400/40 flex items-center justify-center p-2.5 xs:p-3 sm:p-3.5 md:p-4 lg:p-5 transition-all duration-300 ${isSelected ? 'scale-110' : 'hover:scale-105'} pointer-events-auto`}
 																	style={{
 																		boxShadow: isSelected
 																			? '0 0 30px 10px rgba(34, 211, 238, 0.8), 0 0 60px 20px rgba(167, 139, 250, 0.6)'
@@ -2886,7 +2900,7 @@ const PersonalityQuizApp = () => {
 									<div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
 										{recommendations.slice(0, 2).map((tool, idx) => (
 											<div key={tool.id} className="bg-white bg-opacity-10 rounded-xl p-4 sm:p-5 md:p-6 backdrop-filter backdrop-blur-sm border border-white border-opacity-20 flex flex-col items-center">
-												<h4 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 text-white font-silkscreen">{tool.name}</h4>
+												<h4 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 text-white font-silkscreen text-center">{tool.name}</h4>
 												<p className="text-gray-200 text-center leading-relaxed mb-2 font-atkinson text-xs sm:text-sm md:text-base">{tool.shortDescription || tool.description}</p>
 												<div className="mt-4 mb-4 flex flex-col items-center w-full">
 													{/* Ring Chart */}
