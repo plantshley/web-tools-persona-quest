@@ -236,15 +236,15 @@ const branchingQuestions = {
 			}
 		},
 		{
-			text: "The Video Vampire, who animates galaxies and crafts stellar videos.",
+			text: "The Video Vampire, who animates from galaxies and crafts stellar videos.",
 			scores: {
 				"story-teller": 3,
 				"supportType-video": 5,
 				"video-output": 5,
 				"video-creator": 4,
+				"content-creator": 3,
 				"strengths-video-generation": 5,
 				"category-video generation & editing": 5,
-				"strengths-animation": 3
 			
 			
 			}
@@ -412,6 +412,7 @@ const branchingQuestions = {
 			text: "The Synthesis Starfish, who distills information into clear, actionable insights.",
 			scores: {
 				"strengths-synthesis": 5,
+				"strengths-summarization": 3,
 				"story-teller": 5, 
 				"interactive": 5,
 				"category-visualization & design": 3,

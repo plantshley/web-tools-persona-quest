@@ -213,6 +213,22 @@ export const toolsDatabase = [
     complexity: "intermediate"
   },
   {
+    id: "beautiful-ai",
+    name: "Beautiful.ai",
+    url: "https://www.beautiful.ai",
+    shortDescription: "AI-powered presentation maker with smart slide templates that auto-adapt",
+    supportType: ["visual"],
+    category: "visualization & design",
+    aiDependency: "ai-only",
+    price: "freemium",
+    freeTierAccess: "very-limited", // 14-day trial
+    personaTypeMatch: ["presentation-focused", "ai-enthusiast", "quick-starter", "business-oriented", "professional-user"],
+    timePressure: "low",
+    strengths: ["AI design assistance", "Auto-adapting slides", "Professional templates", "Collaboration features", "Analytics", "slides", "beautiful-visualizations"],
+    weaknesses: ["Limited free tier", "Subscription required", "Less customization than manual tools"],
+    complexity: "beginner"
+  },
+  {
     id: "figma",
     name: "Figma",
     url: "https://www.figma.com",
@@ -258,6 +274,22 @@ export const toolsDatabase = [
     timePressure: "low",
     strengths: ["Infinite canvas", "Great for brainstorming", "Real-time collaboration", "Templates", "diagramming", "idea-generation", "Clean UI"],
     weaknesses: ["Can get messy", "Free version limited"],
+    complexity: "beginner"
+  },
+  {
+    id: "excalidraw",
+    name: "Excalidraw",
+    url: "https://excalidraw.com",
+    shortDescription: "Open-source whiteboard for sketching hand-drawn-like diagrams and wireframes",
+    supportType: ["visual", "research"],
+    category: "visualization & design",
+    aiDependency: "manual-only",
+    price: "freemium",
+    freeTierAccess: "robust", // Free open-source editor
+    personaTypeMatch: ["brainstormer", "collaborative-worker", "open-source-advocate", "quick-starter", "design-focused"],
+    timePressure: "low",
+    strengths: ["Hand-drawn aesthetic", "Real-time collaboration", "Open source", "Export to multiple formats", "diagramming", "Clean UI", "wireframing"],
+    weaknesses: ["Limited advanced features", "Hand-drawn style may not suit all needs", "Paid tier for presentations"],
     complexity: "beginner"
   },
   {
@@ -355,6 +387,22 @@ export const toolsDatabase = [
     strengths: ["Industry standard", "Powerful", "Free public version", "Data visualization", "interactive", "statistics", "good-at-analysis"],
     weaknesses: ["Steep learning curve", "Data must be public", "Data storage limits"],
     complexity: "advanced"
+  },
+  {
+    id: "julius-ai",
+    name: "Julius AI",
+    url: "https://julius.ai",
+    shortDescription: "AI-powered data analyst for analyzing spreadsheets and creating visualizations through natural language",
+    supportType: ["data", "visual"],
+    category: "visualization & design",
+    aiDependency: "ai-only",
+    price: "freemium",
+    freeTierAccess: "very-limited", // 15 messages per month
+    personaTypeMatch: ["data-focused", "ai-enthusiast", "prompt-based-user", "analytical-thinker", "spreadsheet-user"],
+    timePressure: "low",
+    strengths: ["Natural language queries", "Advanced statistical analysis", "Data visualization", "Notebooks feature", "Database connectors", "good-at-analysis", "statistics"],
+    weaknesses: ["Limited free tier", "Requires AI knowledge", "Subscription for advanced models"],
+    complexity: "beginner"
   },
   {
     id: "apache-spark",
@@ -620,7 +668,7 @@ export const toolsDatabase = [
     id: "chatgpt",
     name: "ChatGPT",
     url: "https://chat.openai.com",
-    shortDescription: "General writing, research, editing, summarization",
+    shortDescription: "Conversational AI for writing, coding, data analysis, image generation, web browsing, problem-solving, and brainstorming",
     supportType: ["coding", "text", "research", "data"],
     category: ["writing & text generation", "research, knowledge, & learning platforms"],
     aiDependency: "ai-only",
@@ -636,13 +684,13 @@ export const toolsDatabase = [
     id: "gpt5o",
     name: "GPT-5o",
     url: "https://chat.openai.com",
-    shortDescription: "General writing, research, editing, summarization",
-    supportType: ["coding", "text", "research"],
+    shortDescription: "Advanced AI model with enhanced reasoning, coding, vision, voice capabilities, real-time web search, and complex problem-solving",
+    supportType: ["coding", "text", "research", "data"],
     category: ["writing & text generation", "research, knowledge, & learning platforms"],
     aiDependency: "ai-only",
     price: "paid",
     freeTierAccess: "very-limited",
-    personaTypeMatch: ["multimodal-user", "power-user", "professional-writer", "analytical-thinker", "professional-user"],
+    personaTypeMatch: ["multimodal-user", "power-user", "professional-writer", "analytical-thinker", "professional-user", "quality-focused"],
     timePressure: "low",
     strengths: ["Most advanced", "Multimodal", "Best reasoning", "summarization", "debugging"],
     weaknesses: ["Expensive", "Usage limits", "Requires subscription"],
@@ -652,7 +700,7 @@ export const toolsDatabase = [
     id: "claude",
     name: "Claude.ai",
     url: "https://claude.ai",
-    shortDescription: "Coding with artifacts + general writing, research, editing, summarization",
+    shortDescription: "AI assistant with Artifacts for coding, writing, data analysis, document processing, visual analysis, and in-depth research with long context windows",
     supportType: ["coding", "text", "research", "data"],
     category: ["writing & text generation", "web & app builders"],
     aiDependency: "ai-only",
@@ -668,8 +716,8 @@ export const toolsDatabase = [
     id: "gemini",
     name: "Gemini",
     url: "https://gemini.google.com",
-    shortDescription: "General writing, research, editing, summarization",
-    supportType: ["text", "coding", "research"],
+    shortDescription: "Google's multimodal AI for writing, coding, image/video analysis, real-time web search, Google Workspace integration, and long-context understanding",
+    supportType: ["text", "coding", "research", "data"],
     category: ["writing & text generation", "research, knowledge, & learning platforms"],
     aiDependency: "ai-only",
     price: "freemium",
@@ -1213,6 +1261,22 @@ export const toolsDatabase = [
     weaknesses: ["AI-generated sound", "Limited control", "Credits system"],
     complexity: "beginner"
   },
+  {
+    id: "artlist-io",
+    name: "Artlist.io",
+    url: "https://artlist.io",
+    shortDescription: "Royalty-free stock music, sound effects, footage, and video templates with AI tools",
+    supportType: ["audio", "video"],
+    category: ["audio & music generation", "video generation & editing"],
+    aiDependency: "ai-optional", // Has AI video and image generators
+    price: "paid",
+    freeTierAccess: "very-limited", // No free tier, subscription required
+    personaTypeMatch: ["content-creator", "video-creator", "professional-user", "commercial-user", "quality-focused"],
+    timePressure: "low",
+    strengths: ["High-quality assets", "8K footage", "Unlimited downloads", "Commercial license", "AI tools", "Large library", "music-creation", "video-editing"],
+    weaknesses: ["Subscription required", "No free tier", "Can be expensive"],
+    complexity: "beginner"
+  },
 
   // Video Generation & Editing Tools
   {
@@ -1488,6 +1552,22 @@ export const toolsDatabase = [
     strengths: ["Professional grade", "Versatile", "AI plugin ecosystem", "3d-modeling"],
     weaknesses: ["Extremely steep learning curve", "Intimidating interface", "Can be slow"],
     complexity: "advanced"
+  },
+  {
+    id: "daz-studio",
+    name: "Daz Studio",
+    url: "https://www.daz3d.com",
+    shortDescription: "Free 3D character creation, posing, and scene rendering software",
+    supportType: "3d",
+    category: "3D modeling, spatial design, & video games",
+    aiDependency: "manual-only",
+    price: "freemium", // Base software free, Pro version and marketplace content paid
+    freeTierAccess: "robust", // Free base software with full features
+    personaTypeMatch: ["3d-artist", "character-designer", "visual-learner", "creative-expresser", "patient-learner"],
+    timePressure: "medium",
+    strengths: ["Character focused", "Professional rendering", "Large content marketplace", "Genesis platform", "3d-modeling", "rendering"],
+    weaknesses: ["Content purchases add up", "Learning curve", "Resource intensive"],
+    complexity: "intermediate"
   },
   {
     id: "meshy",
