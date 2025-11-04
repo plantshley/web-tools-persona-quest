@@ -288,7 +288,7 @@ export const toolsDatabase = [
     freeTierAccess: "robust", // Free open-source editor
     personaTypeMatch: ["brainstormer", "collaborative-worker", "open-source-advocate", "quick-starter", "design-focused"],
     timePressure: "low",
-    strengths: ["Hand-drawn aesthetic", "Real-time collaboration", "Open source", "Export to multiple formats", "diagramming", "Clean UI", "wireframing"],
+    strengths: ["Hand-drawn aesthetic", "Real-time collaboration", "Open source", "Export to multiple formats", "diagramming", "brainstorming", "wireframing"],
     weaknesses: ["Limited advanced features", "Hand-drawn style may not suit all needs", "Paid tier for presentations"],
     complexity: "beginner"
   },
@@ -1922,7 +1922,7 @@ export const toolsDatabase = [
   aiDependency: "ai-only",
   price: "freemium",
   freeTierAccess: "somewhat-limited", // 5,000 free credits and then $1 for 1,000 credits
-  personaTypeMatch: ["summary-focused", "quick-reader", "flashcard-learner", "academic-researcher"],
+  personaTypeMatch: ["summary-focused", "quick-reader", "flashcard-learner", "academic-researcher", "research-focused"],
   timePressure: "low",
   strengths: ["Paper summaries", "Flashcard creation", "Key insights", "Research highlights", "synthesis", "summarization", "interactive"],
   weaknesses: ["Credit-based system", "Academic focus", "AI may miss nuances"],
