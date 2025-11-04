@@ -608,7 +608,7 @@ export const toolsDatabase = [
     aiDependency: "ai-only",
     price: "freemium",
     freeTierAccess: "somewhat-limited",
-    personaTypeMatch: ["text-in-image-focused", "logo-designer", "ai-enthusiast"],
+    personaTypeMatch: ["text-in-image-focused", "logo-designer", "ai-enthusiast", "content-creator"],
     timePressure: "low",
     strengths: ["Great with text", "High quality", "Easy to use", "image-generation"],
     weaknesses: ["Limited free tier", "Newer platform", "Credit system"],
@@ -1922,7 +1922,7 @@ export const toolsDatabase = [
   aiDependency: "ai-only",
   price: "freemium",
   freeTierAccess: "somewhat-limited", // 5,000 free credits and then $1 for 1,000 credits
-  personaTypeMatch: ["summary-focused", "quick-reader", "flashcard-learner", "academic-researcher", "research-focused"],
+  personaTypeMatch: ["summary-focused", "quick-reader", "flashcard-learner", "academic-researcher", "research-focused", "knowledge-manager"],
   timePressure: "low",
   strengths: ["Paper summaries", "Flashcard creation", "Key insights", "Research highlights", "synthesis", "summarization", "interactive"],
   weaknesses: ["Credit-based system", "Academic focus", "AI may miss nuances"],

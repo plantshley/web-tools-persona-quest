@@ -41,10 +41,15 @@ function normalizeToArray(value) {
 }
 
 // Generate rows from tools database
-function generateRows() {
+function generateRows(toolIds = null) {
   const rows = [];
 
   toolsDatabase.forEach(tool => {
+    // If toolIds is provided, only include those specific tools
+    if (toolIds && !toolIds.includes(tool.id)) {
+      return;
+    }
+
     const supportTypes = normalizeToArray(tool.supportType);
     const categories = normalizeToArray(tool.category);
 
@@ -91,8 +96,9 @@ if (fs.existsSync(excelFilePath)) {
   wb = XLSX.utils.book_new();
 }
 
-// Generate fresh data from toolsDatabase
-const rows = generateRows();
+// Generate fresh data from toolsDatabase - only new tools
+const newToolIds = ['julius-ai', 'daz-studio', 'excalidraw', 'beautiful-ai', 'artlist-io'];
+const rows = generateRows(newToolIds);
 const dataWithoutURL = rows.map(({ URL, ...rest }) => rest);
 
 // Create the Updates worksheet
