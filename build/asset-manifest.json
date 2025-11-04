@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/web-tools-persona-quest/static/css/main.867b2ef4.css",
-    "main.js": "/web-tools-persona-quest/static/js/main.ace99f4f.js",
+    "main.js": "/web-tools-persona-quest/static/js/main.511559b2.js",
     "static/js/453.48cec6ab.chunk.js": "/web-tools-persona-quest/static/js/453.48cec6ab.chunk.js",
     "static/media/neko.png": "/web-tools-persona-quest/static/media/neko.67cfb0a76c058b16e64f.png",
     "static/media/waterbear.png": "/web-tools-persona-quest/static/media/waterbear.6726d80943adeb365b6e.png",
@@ -36,11 +36,11 @@
     "static/media/shooting star.png": "/web-tools-persona-quest/static/media/shooting star.8ea0acb9403f7361e9df.png",
     "index.html": "/web-tools-persona-quest/index.html",
     "main.867b2ef4.css.map": "/web-tools-persona-quest/static/css/main.867b2ef4.css.map",
-    "main.ace99f4f.js.map": "/web-tools-persona-quest/static/js/main.ace99f4f.js.map",
+    "main.511559b2.js.map": "/web-tools-persona-quest/static/js/main.511559b2.js.map",
     "453.48cec6ab.chunk.js.map": "/web-tools-persona-quest/static/js/453.48cec6ab.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.867b2ef4.css",
-    "static/js/main.ace99f4f.js"
+    "static/js/main.511559b2.js"
   ]
 }
