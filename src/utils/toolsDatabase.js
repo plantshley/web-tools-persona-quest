@@ -825,6 +825,38 @@ export const toolsDatabase = [
     complexity: "beginner"
   },
   {
+    id: "quillbot",
+    name: "QuillBot",
+    url: "https://quillbot.com",
+    shortDescription: "AI paraphrasing and grammar checking tool with multiple writing modes",
+    supportType: "text",
+    category: "writing & text generation",
+    aiDependency: "ai-only",
+    price: "freemium",
+    freeTierAccess: "somewhat-limited",
+    personaTypeMatch: ["editor-focused", "perfectionist", "quick-starter", "professional-writer", "ai-enthusiast"],
+    timePressure: "low",
+    strengths: ["Paraphrasing modes", "Grammar checker", "Summarizer", "plagiarism checker", "proofreading", "summarization", "clean UI"],
+    weaknesses: ["125-word limit on free", "Premium needed for full features", "AI can miss context"],
+    complexity: "beginner"
+  },
+  {
+    id: "wordtune",
+    name: "Wordtune",
+    url: "https://www.wordtune.com",
+    shortDescription: "AI writing assistant for rewriting and improving clarity and tone",
+    supportType: "text",
+    category: "writing & text generation",
+    aiDependency: "ai-only",
+    price: "freemium",
+    freeTierAccess: "somewhat-limited",
+    personaTypeMatch: ["editor-focused", "professional-writer", "perfectionist"],
+    timePressure: "low",
+    strengths: ["Clarity improvements", "Tone adjustments", "Length control", "Fact-checking", "proofreading", "summarization"],
+    weaknesses: ["Limited free rewrites", "Subscription for unlimited", "Can change meaning"],
+    complexity: "beginner"
+  },
+  {
     id: "prowritingaid",
     name: "ProWritingAid",
     url: "https://prowritingaid.com",
