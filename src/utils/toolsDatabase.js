@@ -336,7 +336,7 @@ export const toolsDatabase = [
     freeTierAccess: "somewhat-limited",
     personaTypeMatch: ["data-focused", "spatial-thinker", "visual-learner", "quick-starter", "web-focused", "idea-tester"],
     timePressure: "medium",
-    strengths: ["Modern interface", "Easy to use", "Brower-based", "Beautiful visualizations", "mapping", "data-visualization", "clean UI"],
+    strengths: ["Modern interface", "Easy to use", "Brower-based", "Beautiful visualizations", "mapping", "data visualization", "clean UI"],
     weaknesses: ["Limited free tier", "Less powerful than QGIS or ArcGIS"],
     complexity: "beginner"
   },
@@ -384,7 +384,7 @@ export const toolsDatabase = [
     freeTierAccess: "robust",
     personaTypeMatch: ["data-focused", "analytical-thinker", "patient-learner", "self-directed"],
     timePressure: "high",
-    strengths: ["Industry standard", "Powerful", "Free public version", "Data visualization", "interactive", "statistics", "good-at-analysis"],
+    strengths: ["Industry standard", "Powerful", "Free public version", "data-visualization", "interactive", "statistics", "good-at-analysis"],
     weaknesses: ["Steep learning curve", "Data must be public", "Data storage limits"],
     complexity: "advanced"
   },
@@ -393,14 +393,14 @@ export const toolsDatabase = [
     name: "Julius AI",
     url: "https://julius.ai",
     shortDescription: "AI-powered data analyst for analyzing spreadsheets and creating visualizations through natural language",
-    supportType: ["data", "visual"],
-    category: "visualization & design",
+    supportType: ["data", "visual", "research"],
+    category: ["visualization & design", "research, knowledge, & learning platforms"],
     aiDependency: "ai-only",
     price: "freemium",
     freeTierAccess: "very-limited", // 15 messages per month
     personaTypeMatch: ["data-focused", "ai-enthusiast", "prompt-based-user", "analytical-thinker", "spreadsheet-user"],
     timePressure: "low",
-    strengths: ["Natural language queries", "Advanced statistical analysis", "Data visualization", "Notebooks feature", "Database connectors", "good-at-analysis", "statistics"],
+    strengths: ["Natural language queries", "Advanced statistical analysis", "Notebooks feature", "data-visualization",  "Database connectors", "good-at-analysis", "statistics"],
     weaknesses: ["Limited free tier", "Requires AI knowledge", "Subscription for advanced models"],
     complexity: "beginner"
   },
@@ -432,7 +432,7 @@ export const toolsDatabase = [
     freeTierAccess: "robust",
     personaTypeMatch: ["data-focused", "analytical-thinker", "business-oriented"],
     timePressure: "medium",
-    strengths: ["Business intelligence", "Interactive dashboards", "Microsoft integration", "statistics", "good-at-analysis", "Data visualization"],
+    strengths: ["Business intelligence", "Interactive dashboards", "Microsoft integration", "statistics", "good-at-analysis", "data-visualization"],
     weaknesses: ["Learning curve", "Best with Microsoft ecosystem", "Free version has limitations"],
     complexity: "intermediate"
   },
@@ -448,7 +448,7 @@ export const toolsDatabase = [
     freeTierAccess: "somewhat-limited",
     personaTypeMatch: ["visual-learner", "quick-starter", "data-focused"],
     timePressure: "low",
-    strengths: ["Great templates", "Easy infographics", "Charts and maps", "Data visualization"],
+    strengths: ["Great templates", "Easy infographics", "Charts and maps", "data-visualization"],
     weaknesses: ["Limited free tier", "Can look generic"],
     complexity: "beginner"
   },

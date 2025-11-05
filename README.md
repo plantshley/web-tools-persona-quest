@@ -1,27 +1,39 @@
-# Magic Tool Finder - AI Tools Personality Quiz ✨
+# Universe of Tools Persona Quest 🌌
 
-A whimsical, interactive personality quiz that recommends the perfect AI tools based on your creative style, preferences, and project goals. Built with React and featuring a beautiful rainbow pastel fairy theme with sparkle animations!
+An interstellar journey through the cosmos of creativity! This interactive personality quiz helps students and creators discover the perfect web and AI tools for their projects. Embark on a space-themed adventure where you'll explore different planets representing creative domains and meet cosmic creatures that match your personality.
 
 ## 🌟 Features
 
-- **Comprehensive Tool Database**: 20+ carefully curated AI tools across categories like visual design, writing, coding, audio, and data visualization
-- **Smart Recommendation Engine**: Multi-dimensional scoring algorithm that matches users with tools based on:
-  - Project goals and output types
-  - Personality traits and work styles
-  - Budget preferences and AI comfort level
-  - Collaboration preferences
-  - Time constraints and complexity tolerance
-- **Magical User Experience**: Rainbow pastel theme with animated sparkles and smooth transitions
-- **Detailed Results**: Shows top 2 tool recommendations with personalized reasons, pricing info, and direct links
+- **Extensive Tool Database**: 120+ carefully curated web and AI tools across 8 major categories
+- **Intelligent Recommendation System**: Sophisticated multi-dimensional scoring algorithm that matches users with tools based on:
+  - Creative output type (visual, text, code, audio, data, 3D, presentations, research)
+  - Personality-based "creature" archetypes
+  - Work style and learning preferences
+  - Budget constraints and free tier availability
+  - AI dependency preferences
+  - Collaboration style and time pressure
+- **Immersive Space Theme**: Journey through 8 cosmic planets, each representing a creative domain:
+  - 🎨 **Visualis**: Visual design and graphics
+  - ✍️ **Textara**: Writing and text generation
+  - 💻 **Codion**: Coding and web/app building
+  - 🎵 **Audiona**: Audio and music creation
+  - 📊 **Dataralis**: Data analysis and visualization
+  - 📽️ **Presentira**: Presentations and interactive content
+  - 🎮 **Dimensio**: 3D modeling, spatial design, and games
+  - 📚 **Researa**: Research, knowledge management, and learning
+- **Personalized Results**: Top 10 tool recommendations with detailed information including strengths, weaknesses, pricing, and complexity levels
+- **Summary Table**: Comprehensive overview of recommendations with attribute matching visualization
 
 ## 🎨 Design
 
-The app features a beautiful fairy-tale aesthetic with:
-- Rainbow pastel gradients (pink, purple, blue, green, yellow)
-- Animated sparkle effects throughout the interface
-- Glassmorphism design with backdrop blur effects
-- Smooth hover animations and transitions
-- Responsive design that works on all devices
+The app features an enchanting space-themed aesthetic with:
+- Deep cosmic background with twinkling stars
+- Planet-themed navigation with unique icons for each domain
+- Pastel neon gradients (cyan, purple, pink, yellow)
+- Smooth animations and transitions throughout
+- Glassmorphism cards with glowing borders
+- Responsive design optimized for both desktop and mobile
+- Retro-futuristic typography using Silkscreen and Share Tech Mono fonts
 
 ## 🚀 Getting Started
 
@@ -68,7 +80,7 @@ npm run deploy
 ## 🛠 Customization
 
 ### Adding New Tools
-Edit the `toolsDatabase` array in `src/components/PersonalityQuiz.jsx` to add new tools with the following structure:
+Edit the `toolsDatabase` array in `src/utils/toolsDatabase.js` to add new tools with the following structure:
 
 ```javascript
 {
@@ -90,10 +102,13 @@ Edit the `toolsDatabase` array in `src/components/PersonalityQuiz.jsx` to add ne
 ```
 
 ### Modifying Questions
-Update the `quizQuestions` array to add or modify quiz questions. Each question should have:
+Update the `quizQuestions` array in `src/components/PersonalityQuiz_tableVer.js` to add or modify quiz questions. Each question should have:
 - Unique id
 - Question text
-- Array of options with scoring for different personality traits
+- Array of options with scoring for different personality traits and tool attributes
+
+### Updating the Excel Database
+Run `node updateExcel.js` to sync the toolsDatabase with the Excel spreadsheet (`Web_Tools_Database.xlsx`). The script creates an "Updates" tab with all tools formatted for easy review.
 
 ### Styling Changes
 - Colors and themes can be modified in `tailwind.config.js`
@@ -102,26 +117,60 @@ Update the `quizQuestions` array to add or modify quiz questions. Each question 
 
 ## 🎯 Quiz Logic
 
-The recommendation algorithm considers:
+The recommendation algorithm uses a sophisticated multi-factor scoring system:
 
-1. **Project Goals**: What type of output the user wants to create
-2. **Support Types**: The specific creative medium (visual, text, audio, etc.)
-3. **Personality Traits**: Work style, learning preferences, collaboration style
-4. **Budget Preferences**: Free vs paid tool preferences
-5. **AI Comfort**: Preference for AI assistance vs manual control
-6. **Time Constraints**: Complexity tolerance and learning curve preferences
+1. **Question 1 - Planet Selection**: Determines primary support type and creative domain
+2. **Question 2 - Creature Archetype**: Identifies specific personality traits, strengths, and sub-categories
+3. **Additional Questions**: Refine recommendations based on:
+   - Color preferences (aesthetic and work style indicators)
+   - Collaboration style (solo vs. team-oriented)
+   - Learning approach (dive-in vs. manual-guided)
+   - Budget constraints (free vs. paid preferences)
+   - AI dependency preferences (AI-only, AI-optional, or manual tools)
+   - Time pressure (fast prototyping vs. quality-focused)
+   - Motivation (perfection vs. efficiency)
+
+The scoring system assigns weighted points to tools based on:
+- **Category match** (4x weight)
+- **Persona type match** (5x for Q2 personas, 2x for others)
+- **AI dependency match** (4x weight)
+- **Price preference** (3x weight)
+- **Strengths alignment** (5x for Q2 strengths, 2x for others)
+- **Complexity tolerance**
+- **Free tier access quality**
 
 ## 📊 Tools Included
 
-The quiz includes 20+ tools across categories:
-- **Visual Design**: Canva, Figma, Miro
-- **Writing**: ChatGPT, Claude, Grammarly, Notion AI
-- **Image Generation**: Midjourney, DALL-E
-- **Web/App Building**: Bolt.new, Bubble
-- **3D Modeling**: Blender, Spline, Unity
-- **Audio/Music**: Audacity, Suno, Descript
-- **Data Visualization**: Flourish, Tableau
-- And many more!
+The quiz includes 120+ tools across categories:
+
+### Visualization & Design
+Canva, Figma, FigJam, Miro, Excalidraw, Beautiful.ai, Genially, ArcGIS, QGIS, Tableau, Power BI, Julius AI, Flourish, Infogram, Whimsical, Google Looker Studio, Visio
+
+### Image Generation
+Midjourney, DALL-E, Leonardo.ai, Adobe Firefly, Stable Diffusion, Runway ML, Ideogram, Freepik AI
+
+### Writing & Text Generation
+ChatGPT, Claude, Gemini, Grammarly, QuillBot, Notion AI, Wordtune, Jasper
+
+### Web & App Builders
+Loveable.dev, Bolt.new, Glide, Softr, Flutterflow, Bubble, Webflow, Framer, Wix, Squarespace, Replit
+
+### Speech & Voice Interaction
+ElevenLabs, Speechify, Otter.ai, Google Cloud TTS, Descript, Adobe Podcast
+
+### Audio & Music Generation
+Suno, Udio, Mubert, Amper, Boomy, Audacity, Artlist.io
+
+### Video Generation & Editing
+Runway ML, Pika Labs, Synthesia, HeyGen, CapCut, Adobe Premiere, DaVinci Resolve, Clipchamp
+
+### 3D Modeling & Games
+Blender, Daz Studio, Spline, Meshy, Luma AI, Unity, Unreal Engine, Godot, Roblox Studio, Meta Horizon
+
+### Research & Learning Platforms
+Notion, Coda, Obsidian, Zotero, Scholarcy, Perplexity, Elicit, Consensus, ChatPDF, Claude
+
+And many more!
 
 ## 🤝 Contributing
 
@@ -131,8 +180,23 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is open source and available under the [MIT License](LICENSE).
 
+## 🌌 Creature Archetypes
+
+Each planet has unique creature companions that represent different creative personalities:
+
+- **Visualis**: Diagramming Druid, Nebula Neko, Video Vampire, Collagist Chimera
+- **Textara**: Paper Phoenix, Story Seiryū, Grammar Gremlin, Inspiration Imp, Paraphrase Pixie
+- **Codion**: Debugging Druid, App Angel, Web Weaver, Experience Elemental
+- **Audiona**: Speech Sprite, Voiceover Veery, Melody Mermaid, Podcast Pulsar
+- **Dataralis**: Stat Starling, Chart Chameleon, Synthesis Starfish, Map Marmot
+- **Presentira**: Slide Seraph, Frame Firefly, Poll Pegasus, Infographic Imp
+- **Dimensio**: Render Raccoon, Generative Griffin, Pixel Pegasus, Spatial Salamander
+- **Researa**: Note Nebula, Abstract Axolotl, Focus Firefly, Collaboration Kitsune
+
 ## ✨ Acknowledgments
 
 - Built with React and Tailwind CSS
-- Icons by Lucide React
-- Inspired by the need to help students find the right AI tools for their projects
+- Icons by custom pixel art and emoji designs
+- Cosmic theme inspired by space exploration and creativity
+- Created to help engineering and art students discover the perfect tools for their creative adventures
+- Developed as part of an Air Quality Lab art + engineering project

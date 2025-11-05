@@ -405,7 +405,7 @@ const branchingQuestions = {
 				"data-focused": 4,
 				"strengths-data-visualization": 4,
 				"category-visualization & design": 3,
-				"supportType-visual": 5
+				//"supportType-visual": 5
 			}
 		},
 		{
@@ -1607,6 +1607,11 @@ const PersonalityQuizApp = () => {
 
 			   // Filter out AI-only tools if user prefers manual
 			   if ((activeUserScores['manual-only'] || activeUserScores['manual-preference']) && tool.aiDependency === 'ai-only') {
+				   return false;
+			   }
+
+			   // If user chose Dataralis (data-output), exclude image generation tools
+			   if (activeUserScores['data-output'] && tool.category === 'image generation') {
 				   return false;
 			   }
 
