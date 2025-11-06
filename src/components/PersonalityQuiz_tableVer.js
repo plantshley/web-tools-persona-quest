@@ -1804,6 +1804,89 @@ const PersonalityQuizApp = () => {
 					totalPossiblePenalties += categoryPenalty;
 				}
 			}
+
+			// Q2 Creature Requirement Penalty
+			// Apply light penalty for tools that don't meet specific creature strength requirements
+			if (activeAnswers.length > 1 && activeQuestions[1]) {
+				const q2Answer = activeQuestions[1].options[activeAnswers[1]];
+				const q2AnswerText = q2Answer.text.toLowerCase();
+
+				const creatureRequirements = {
+					'debugging druid': { strengths: ['debugging'], personas: [], supportTypes: [], categories: [] },
+					'diagramming druid': { strengths: ['diagramming'], personas: [], supportTypes: [], categories: [] },
+					'nebula neko': { strengths: ['image-generation'], personas: [], supportTypes: [], categories: ['image generation'] },
+					'video vampire': { strengths: [], personas: [], supportTypes: ['video'], categories: [] },
+					'story seiryū': { strengths: ['creative-writing'], personas: [], supportTypes: [], categories: [] },
+					'grammar gremlin': { strengths: ['proofreading'], personas: ['editor-focused'], supportTypes: [], categories: [] },
+					'speech sprite': { strengths: ['speech-tools'], personas: [], supportTypes: [], categories: [] },
+					'voiceover veery': { strengths: ['voiceover'], personas: [], supportTypes: [], categories: [] },
+					'melody mermaid': { strengths: ['music-creation'], personas: [], supportTypes: [], categories: [] },
+					'stat starling': { strengths: ['statistics'], personas: [], supportTypes: [], categories: [] },
+					'chart chameleon': { strengths: ['data-visualization'], personas: [], supportTypes: [], categories: [] },
+					'map marmot': { strengths: ['mapping'], personas: [], supportTypes: [], categories: [] },
+					'frame firefly': { strengths: [], personas: [], supportTypes: ['video'], categories: [] },
+					'infographic imp': { strengths: ['infographics'], personas: [], supportTypes: [], categories: [] },
+					'generative griffin': { strengths: [], personas: ['prompt-based-user'], supportTypes: [], categories: [] },
+					'pixel pegasus': { strengths: [], personas: ['game-developer'], supportTypes: [], categories: [] },
+					'focus firefly': { strengths: ['motivation'], personas: [], supportTypes: [], categories: [] },
+					'spatial salamander': { strengths: ['simulations'], personas: [], supportTypes: [], categories: [] },
+					'slide seraph': { strengths: ['slides'], personas: [], supportTypes: [], categories: [] },
+					'collagist chimera': { strengths: ['infographics'], personas: [], supportTypes: [], categories: [] },
+					'paper phoenix': { strengths: ['technical-writing'], personas: ['professional-writer', 'academic-researcher'], supportTypes: [], categories: [] },
+					'inspiration imp': { strengths: ['idea-generation'], personas: ['brainstormer'], supportTypes: [], categories: [] },
+					'paraphrase pixie': { strengths: ['summarization'], personas: ['ai-enthusiast'], supportTypes: [], categories: [] },
+					'app angel': { strengths: ['no-code', 'mobile-app'], personas: ['ai-enthusiast', 'developer', 'prompt-based-user'], supportTypes: [], categories: [] },
+					'web weaver': { strengths: ['website-building', 'interactive'], personas: ['developer'], supportTypes: [], categories: [] },
+					'experience elemental': { strengths: ['no-code', 'interactive'], personas: ['ai-enthusiast', 'prompt-based-user'], supportTypes: [], categories: [] },
+					'podcast pulsar': { strengths: ['audio-editing'], personas: ['podcaster', 'content-creator'], supportTypes: [], categories: [] },
+					'synthesis starfish': { strengths: ['synthesis', 'data-visualization'], personas: ['story-teller', 'interactive'], supportTypes: [], categories: [] },
+					'note nebula': { strengths: ['note-taking', 'planning'], personas: ['knowledge-manager', 'citation-focused'], supportTypes: [], categories: [] },
+					'abstract axolotl': { strengths: ['summarization', 'synthesis', 'good-at-analysis'], personas: ['interactive'], supportTypes: [], categories: [] },
+					'collaboration kitsune': { strengths: ['collaboration', 'real-time-collaboration', 'community'], personas: ['collaborative-worker'], supportTypes: [], categories: [] },
+					'poll pegasus': { strengths: ['interactive'], personas: ['educator', 'engagement-focused'], supportTypes: [], categories: [] }
+				};
+
+				// Check if this answer matches any creature requirement
+				let creatureMatch = null;
+				for (const [creatureName, requirements] of Object.entries(creatureRequirements)) {
+					if (q2AnswerText.includes(creatureName)) {
+						creatureMatch = requirements;
+						break;
+					}
+				}
+
+				// If this is a creature with specific requirements, penalize tools that don't have them
+				if (creatureMatch) {
+					const hasRequiredStrength = creatureMatch.strengths.length === 0 || creatureMatch.strengths.some(reqStrength => {
+						return (tool.strengths || []).some(toolStrength =>
+							toolStrength.toLowerCase().includes(reqStrength.toLowerCase())
+						);
+					});
+
+					const hasRequiredPersona = creatureMatch.personas.length === 0 || creatureMatch.personas.some(reqPersona => {
+						return (tool.personaTypeMatch || []).includes(reqPersona);
+					});
+
+					const hasRequiredSupportType = creatureMatch.supportTypes.length === 0 || creatureMatch.supportTypes.some(reqType => {
+						const toolSupportTypes = Array.isArray(tool.supportType) ? tool.supportType : [tool.supportType];
+						return toolSupportTypes.includes(reqType);
+					});
+
+					const hasRequiredCategory = creatureMatch.categories.length === 0 || creatureMatch.categories.some(reqCategory => {
+						const toolCategories = Array.isArray(tool.category) ? tool.category : [tool.category];
+						return toolCategories.some(cat => cat.toLowerCase().includes(reqCategory.toLowerCase()));
+					});
+
+					// Tool must match at least ONE requirement from EACH specified requirement type
+					if (!hasRequiredStrength || !hasRequiredPersona || !hasRequiredSupportType || !hasRequiredCategory) {
+						// Light penalty for not meeting creature requirements
+						const creatureMismatchPenalty = 10;
+						score -= creatureMismatchPenalty;
+						totalPossiblePenalties += creatureMismatchPenalty;
+					}
+				}
+			}
+
 			// AI dependency match
 			if (activeUserScores[tool.aiDependency]) {
 				score += activeUserScores[tool.aiDependency] * 4;
