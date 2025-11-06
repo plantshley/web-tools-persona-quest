@@ -1627,7 +1627,7 @@ export const toolsDatabase = [
     aiDependency: "manual-only",
     price: "free",
     freeTierAccess: "robust",
-    personaTypeMatch: ["game-developer", "open-source-advocate", "interactive-creator", "patient-learner"],
+    personaTypeMatch: ["growth-focused", "game-developer", "open-source-advocate", "interactive-creator", "patient-learner"],
     timePressure: "medium",
     strengths: ["Completely free", "No royalties", "Cross-platform", "2D and 3D", "game-design"],
     weaknesses: ["Smaller community than Unity", "Learning curve", "Fewer assets"],
