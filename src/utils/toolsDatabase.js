@@ -1351,7 +1351,7 @@ export const toolsDatabase = [
     aiDependency: "ai-only",
     price: "freemium",
     freeTierAccess: "somewhat-limited",
-    personaTypeMatch: ["music-lover", "ai-enthusiast", "content-creator", "professional-user", "quality-focused"],
+    personaTypeMatch: ["music-lover", "professional-user", "quality-focused", "creative-expresser"],
     timePressure: "medium",
     strengths: ["Full song generation", "Professional quality", "Multiple genres", "WAV/stem downloads", "music-creation"],
     weaknesses: ["Credit system", "Limited free tier", "Can sound AI-generated"],
