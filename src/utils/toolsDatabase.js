@@ -98,6 +98,38 @@ export const toolsDatabase = [
     complexity: "advanced"
   },
   {
+    id: "webflow",
+    name: "Webflow",
+    url: "https://webflow.com",
+    shortDescription: "Visual web design platform with CMS and hosting",
+    supportType: ["coding", "visual"],
+    category: "web & app builders",
+    aiDependency: "ai-optional",
+    price: "freemium",
+    freeTierAccess: "somewhat-limited",
+    personaTypeMatch: ["design-focused", "professional-user", "technical-learner", "web-focused"],
+    timePressure: "medium",
+    strengths: ["Professional output", "CMS included", "SEO-friendly", "website-building", "Visual design"],
+    weaknesses: ["Learning curve", "Expensive for production", "No true backend"],
+    complexity: "intermediate"
+  },
+  {
+    id: "framer",
+    name: "Framer",
+    url: "https://www.framer.com",
+    shortDescription: "AI-powered website builder for designers with prototyping features",
+    supportType: ["coding", "visual"],
+    category: "web & app builders",
+    aiDependency: "ai-optional",
+    price: "freemium",
+    freeTierAccess: "somewhat-limited",
+    personaTypeMatch: ["design-focused", "ai-enthusiast", "quick-starter", "web-focused", "creative-expresser"],
+    timePressure: "low",
+    strengths: ["Figma integration", "Responsive design", "Fast optimization", "website-building", "AI generation"],
+    weaknesses: ["Design-focused only", "Domain costs extra", "Limited backend"],
+    complexity: "beginner"
+  },
+  {
     id: "adalo",
     name: "Adalo",
     url: "https://www.adalo.com",
@@ -1035,6 +1067,22 @@ export const toolsDatabase = [
     complexity: "advanced"
   },
   {
+    id: "otter-ai",
+    name: "Otter.ai",
+    url: "https://otter.ai",
+    shortDescription: "AI transcription and meeting notes with speaker identification",
+    supportType: "audio",
+    category: "speech & voice interaction",
+    aiDependency: "ai-only",
+    price: "freemium",
+    freeTierAccess: "somewhat-limited",
+    personaTypeMatch: ["meeting-focused", "professional-user", "note-taker", "accessibility-focused"],
+    timePressure: "low",
+    strengths: ["Real-time transcription", "Speaker ID", "Meeting assistant", "Timestamps", "Zoom integration", "speech-tools", "STT"],
+    weaknesses: ["Limited free minutes", "Subscription for full features", "Requires internet"],
+    complexity: "beginner"
+  },
+  {
     id: "voiceflow",
     name: "Voiceflow",
     url: "https://www.voiceflow.com",
@@ -1294,6 +1342,22 @@ export const toolsDatabase = [
     complexity: "beginner"
   },
   {
+    id: "udio",
+    name: "Udio",
+    url: "https://www.udio.com",
+    shortDescription: "AI music generator creating complete songs with vocals from text prompts",
+    supportType: "audio",
+    category: "audio & music generation",
+    aiDependency: "ai-only",
+    price: "freemium",
+    freeTierAccess: "somewhat-limited",
+    personaTypeMatch: ["music-lover", "ai-enthusiast", "content-creator", "professional-user", "quality-focused"],
+    timePressure: "medium",
+    strengths: ["Full song generation", "Professional quality", "Multiple genres", "WAV/stem downloads", "music-creation"],
+    weaknesses: ["Credit system", "Limited free tier", "Can sound AI-generated"],
+    complexity: "beginner"
+  },
+  {
     id: "artlist-io",
     name: "Artlist.io",
     url: "https://artlist.io",
@@ -1304,7 +1368,7 @@ export const toolsDatabase = [
     price: "paid",
     freeTierAccess: "very-limited", // No free tier, subscription required
     personaTypeMatch: ["content-creator", "video-creator", "professional-user", "commercial-user", "quality-focused"],
-    timePressure: "low",
+    timePressure: "medium",
     strengths: ["High-quality assets", "8K footage", "Unlimited downloads", "Commercial license", "AI tools", "Large library", "music-creation", "video-editing"],
     weaknesses: ["Subscription required", "No free tier", "Can be expensive"],
     complexity: "beginner"
@@ -1408,6 +1472,54 @@ export const toolsDatabase = [
     complexity: "beginner"
   },
   {
+    id: "capcut",
+    name: "CapCut",
+    url: "https://www.capcut.com",
+    shortDescription: "Free video editor with AI features for mobile and desktop",
+    supportType: "video",
+    category: "video generation & editing",
+    aiDependency: "ai-optional",
+    price: "freemium",
+    freeTierAccess: "robust",
+    personaTypeMatch: ["content-creator", "video-creator", "quick-starter", "mobile-app-focused"],
+    timePressure: "low",
+    strengths: ["No watermark on free", "AI captions", "Cross-platform", "Easy to use", "video-editing"],
+    weaknesses: ["4K needs Pro", "Some effects locked", "Mobile-first design"],
+    complexity: "beginner"
+  },
+  {
+    id: "davinci-resolve",
+    name: "DaVinci Resolve",
+    url: "https://www.blackmagicdesign.com/products/davinciresolve",
+    shortDescription: "Professional video editing, color grading, and VFX software",
+    supportType: "video",
+    category: "video generation & editing",
+    aiDependency: "manual-only",
+    price: "freemium",
+    freeTierAccess: "robust",
+    personaTypeMatch: ["professional-user", "video-creator", "technical-learner", "quality-focused", "patient-learner"],
+    timePressure: "high",
+    strengths: ["Professional grade", "Color grading", "VFX tools", "One-time purchase", "4K support", "video-editing"],
+    weaknesses: ["Steep learning curve", "Resource intensive", "Complex interface"],
+    complexity: "advanced"
+  },
+  {
+    id: "clipchamp",
+    name: "Clipchamp",
+    url: "https://clipchamp.com",
+    shortDescription: "Microsoft's web-based video editor with AI features",
+    supportType: "video",
+    category: "video generation & editing",
+    aiDependency: "ai-optional",
+    price: "freemium",
+    freeTierAccess: "robust",
+    personaTypeMatch: ["quick-starter", "content-creator", "video-creator", "microsoft-user"],
+    timePressure: "low",
+    strengths: ["Web-based", "No watermark", "AI captions", "1080p free", "Microsoft integration", "video-editing"],
+    weaknesses: ["4K needs Premium", "Limited effects on free", "Requires internet"],
+    complexity: "beginner"
+  },
+  {
     id: "lumen5",
     name: "Lumen5",
     url: "https://lumen5.com",
@@ -1504,6 +1616,22 @@ export const toolsDatabase = [
     strengths: ["Cutting-edge graphics", "Powerful", "Blueprint system", "simulations", "game-design"],
     weaknesses: ["Very complex", "Resource intensive", "Steep learning curve"],
     complexity: "advanced"
+  },
+  {
+    id: "godot",
+    name: "Godot",
+    url: "https://godotengine.org",
+    shortDescription: "Free open-source game engine for 2D and 3D games",
+    supportType: "3d",
+    category: "3D modeling, spatial design, & video games",
+    aiDependency: "manual-only",
+    price: "free",
+    freeTierAccess: "robust",
+    personaTypeMatch: ["game-developer", "open-source-advocate", "interactive-creator", "patient-learner"],
+    timePressure: "medium",
+    strengths: ["Completely free", "No royalties", "Cross-platform", "2D and 3D", "game-design"],
+    weaknesses: ["Smaller community than Unity", "Learning curve", "Fewer assets"],
+    complexity: "intermediate"
   },
   {
     id: "twinmotion",
