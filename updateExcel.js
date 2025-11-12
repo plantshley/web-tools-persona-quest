@@ -57,16 +57,16 @@ function generateRows(toolIds = null) {
     supportTypes.forEach(supportType => {
       categories.forEach(category => {
         rows.push({
-          'Name': tool.name,
-          'URL': tool.url,
-          'Description': tool.shortDescription,
           'Support Type': supportType,
-          'Category': category,
+          'Use-Case Category': category,
           'AI-Dependency': tool.aiDependency,
           'Price': formatPrice(tool),
           'Complexity': tool.complexity,
+          'Tool Name': tool.name,
+          'Description': tool.shortDescription,
           'Strengths': getFirstThree(tool.strengths),
-          'Weaknesses': getFirstThree(tool.weaknesses)
+          'Weaknesses': getFirstThree(tool.weaknesses),
+          'URL': tool.url
         });
       });
     });
@@ -97,7 +97,12 @@ if (fs.existsSync(excelFilePath)) {
 }
 
 // Generate fresh data from toolsDatabase - only new tools
-const newToolIds = ['julius-ai', 'daz-studio', 'excalidraw', 'beautiful-ai', 'artlist-io'];
+const newToolIds = [
+  'capcut',
+  'davinci-resolve',
+  'clipchamp',
+  'godot'
+];
 const rows = generateRows(newToolIds);
 const dataWithoutURL = rows.map(({ URL, ...rest }) => rest);
 
@@ -106,21 +111,21 @@ const ws = XLSX.utils.json_to_sheet(dataWithoutURL);
 
 // Set column widths
 ws['!cols'] = [
-  { wch: 25 },  // Name
-  { wch: 60 },  // Description
   { wch: 15 },  // Support Type
-  { wch: 35 },  // Category
+  { wch: 35 },  // Use-Case Category
   { wch: 15 },  // AI-Dependency
   { wch: 40 },  // Price
   { wch: 15 },  // Complexity
+  { wch: 25 },  // Tool Name
+  { wch: 60 },  // Description
   { wch: 50 },  // Strengths
   { wch: 50 }   // Weaknesses
 ];
 
-// Add hyperlinks to Name column
+// Add hyperlinks to Tool Name column (now at column index 5)
 const range = XLSX.utils.decode_range(ws['!ref']);
 for (let R = range.s.r + 1; R <= range.e.r; ++R) {
-  const nameCell = XLSX.utils.encode_cell({ r: R, c: 0 });
+  const nameCell = XLSX.utils.encode_cell({ r: R, c: 5 });
   const url = rows[R - 1].URL;
 
   if (ws[nameCell] && url) {

@@ -231,8 +231,8 @@ const branchingQuestions = {
 				"creative-expresser": 2,
 				"artistic": 2,
 				"ai-enthusiast": 5,
-				"strengths-image-generation": 20,
-				"category-image generation": 20,
+				"strengths-image-generation": 5,
+				"category-image generation": 10,
 			}
 		},
 		{
@@ -415,8 +415,8 @@ const branchingQuestions = {
 				"strengths-summarization": 3,
 				"story-teller": 5, 
 				"interactive": 5,
-				"category-visualization & design": 3,
-				"strengths-data-visualization": 2
+				"category-visualization & design": 1,
+				"strengths-data-visualization": 1
 			}
 		},
 		{
@@ -487,7 +487,7 @@ const branchingQuestions = {
 				"rapid-prototyper": 2,
 				"prompt-based-user": 4,
 				"category-3D modeling, spatial design, & video games": 3,
-				"rapid-prototyper": 2
+				
 			}
 		},
 		{
@@ -550,7 +550,7 @@ const branchingQuestions = {
 		{
 			text: "The Collaboration Kitsune, who shares and annotates research with fellow wisdom-seekers.",
 			scores: {
-				"collaborative-worker": 10,
+				"collaborative-worker": 5,
 				"strengths-collaborative": 10,
 				"strengths-real-time-collaboration": 10
 
@@ -725,7 +725,7 @@ const baseQuizQuestions = [
 			{ 
 				text: "A warm golden star with earthy, cozy tones - natural and approachable vibes", 
 				scores: { 
-					"collaborative-worker": 0.1,
+					"collaborative-worker": 1,
 					"conversational-learner": 1
 				} 
 			}
@@ -963,6 +963,7 @@ const baseQuizQuestions = [
 				text: "The rush of blazing through challenges at light speed to reach my goal",
 				scores: {
 					"rapid-prototyper": 1,
+					"quick-starter": 1,
 					//"timePressure-low": 1, 
 					"weaknesses-learning curve": 1
 				}
@@ -1625,7 +1626,7 @@ const PersonalityQuizApp = () => {
 		// Q2 personas and strengths arrays
 		const q2Personas = [
 			'story-teller', 'interactive', 'data-focused', 'visual-learner',
-			'knowledge-manager', 'academic-researcher',
+			'knowledge-manager', 'academic-researcher', 'research-focused',
 			'content-creator', 'artistic', 'creative-expresser', 'ai-enthusiast',
 			'3d-artist', 'game-developer', 'architect', 'spatial-thinker',
 			'podcaster', 'music-lover', 'educator',
@@ -1634,7 +1635,7 @@ const PersonalityQuizApp = () => {
 			'code-curious', 'developer', 'presentation-focused',
 			'engagement-focused', 'technical-learner', 'quick-starter',
 			'rapid-prototyper', 'real-estate-focused', 'editor-focused',
-			'citation-focused', 'interactive-creator', 'patient-learner', "collaborative-worker"
+			'citation-focused', 'interactive-creator', 'patient-learner', 'collaborative-worker'
 		];
 
 		const q2Strengths = [
@@ -1913,7 +1914,7 @@ const PersonalityQuizApp = () => {
 			];
 			const q2Personas = [
 				'story-teller', 'interactive', 'data-focused', 'visual-learner',
-				'knowledge-manager', 'academic-researcher',
+				'knowledge-manager', 'academic-researcher', 'research-focused',
 				'content-creator', 'artistic', 'creative-expresser', 'ai-enthusiast',
 				'3d-artist', 'game-developer', 'architect', 'spatial-thinker',
 				'podcaster', 'music-lover', 'educator',
@@ -1922,7 +1923,7 @@ const PersonalityQuizApp = () => {
 				'code-curious', 'developer', 'presentation-focused',
 				'engagement-focused', 'technical-learner', 'quick-starter',
 				'rapid-prototyper', 'real-estate-focused', 'editor-focused',
-				'citation-focused', 'interactive-creator', 'patient-learner'
+				'citation-focused', 'interactive-creator', 'patient-learner', 'collaborative-worker'
 			];
 
 			tool.personaTypeMatch.forEach(persona => {
