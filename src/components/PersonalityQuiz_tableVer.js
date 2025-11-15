@@ -6,6 +6,7 @@ import AnimatedBeam from './animata/background/animated-beam.jsx';
 import WaveReveal from './animata/text/wave-reveal.tsx';
 import BlurryBlob from './animata/background/blurry-blob.tsx';
 import { toolsDatabase } from '../utils/toolsDatabase.js';
+import { trackQuizEvent } from '../utils/analytics';
 import greetingIcon from '../assets/images/icons/greeting.png';
 import butterflyIcon from '../assets/images/icons/butterfly.png';
 import lambIcon from '../assets/images/icons/lamb.png';
@@ -1532,6 +1533,19 @@ const PersonalityQuizApp = () => {
 		   // Calculate top 10 for the summary table using the full scoring logic
 		   const top10 = calculateRecommendations(userScores, quizQuestions, answers, 10);
 		   setRecommendations(top10);
+
+		   // Track quiz completion event
+		   const planet = answers[0] !== undefined ? quizQuestions[0].options[answers[0]].text : 'Unknown';
+		   const creature = answers[1] !== undefined ? quizQuestions[1].options[answers[1]].text : 'Unknown';
+
+		   trackQuizEvent('quiz_completed', {
+			   planet: planet.split(':')[0].trim(),
+			   creature: creature.split(',')[0].replace('The ', '').trim(),
+			   top_tool: top10[0]?.name || 'Unknown',
+			   top_tool_score: Math.round(top10[0]?.score || 0),
+			   total_questions: answers.length,
+			   total_tools_recommended: top10.length
+		   });
 	   }
    }, [showResults, userScores, quizQuestions, answers]);
 
@@ -1561,6 +1575,15 @@ const PersonalityQuizApp = () => {
 		   newScores[trait] = (newScores[trait] || 0) + score;
 	   });
 	   setUserScores(newScores);
+
+	   // Track question answer event
+	   trackQuizEvent('question_answered', {
+		   question_number: currentQuestion + 1,
+		   question_id: quizQuestions[currentQuestion].id,
+		   answer_text: selectedOption.text.substring(0, 100), // Truncate for analytics
+		   is_final_question: currentQuestion === quizQuestions.length - 1
+	   });
+
 	   if (currentQuestion < quizQuestions.length - 1) {
 		   setCurrentQuestion(currentQuestion + 1);
 	   } else {
@@ -2276,6 +2299,13 @@ const PersonalityQuizApp = () => {
 	};
 
 	const resetQuiz = () => {
+		// Track quiz restart event
+		trackQuizEvent('quiz_restarted', {
+			from_question: currentQuestion + 1,
+			had_completed: showResults,
+			answers_given: answers.length
+		});
+
 		setCurrentQuestion(0);
 		setAnswers([]);
 		setShowResults(false);
@@ -3079,7 +3109,22 @@ const PersonalityQuizApp = () => {
 													</div>
 												)}
 
-												<a href={tool.url} target="_blank" rel="noopener noreferrer" className="mt-4 text-cyan-200 hover:underline font-silkscreen text-xs sm:text-sm md:text-base">
+												<a
+													href={tool.url}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="mt-4 text-cyan-200 hover:underline font-silkscreen text-xs sm:text-sm md:text-base"
+													onClick={() => {
+														trackQuizEvent('tool_clicked', {
+															tool_name: tool.name,
+															tool_url: tool.url,
+															tool_rank: idx + 1,
+															compatibility_percentage: tool.compatibilityPercentage,
+															tool_category: tool.category,
+															tool_price: tool.price
+														});
+													}}
+												>
 													Chart a Course °⋆.ᯓ★
 												</a>
 											</div>
