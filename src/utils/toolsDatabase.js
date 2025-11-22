@@ -2211,7 +2211,7 @@ export const toolsDatabase = [
   aiDependency: "ai-only",
   price: "free",
   freeTierAccess: "full",
-  personaTypeMatch: ["research-focused", "academic-researcher", "knowledge-manager", "student", "conversational-learner", "note-taker", "audio-learner"],
+  personaTypeMatch: ["summary-focused", "knowledge-manager", "conversational-learner", "note-taker", "audio-learner"],
   timePressure: "low",
   strengths: ["Source-grounded AI", "Audio Overview podcasts", "Study guide generation", "Multi-source synthesis", "Citation tracking", "Google Drive integration", "summarization", "note-taking"],
   weaknesses: ["Google account required", "Limited to uploaded sources", "No real-time web search", "Privacy concerns"],
