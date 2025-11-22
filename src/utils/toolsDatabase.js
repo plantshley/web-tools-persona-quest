@@ -2200,6 +2200,22 @@ export const toolsDatabase = [
   strengths: ["Highly customizable", "All-in-one workspace", "Multiple views", "note-taking", "motivation", "planning", "collaboration", "Clean UI"],
   weaknesses: ["Can be overwhelming", "Steep learning curve", "Feature overload", "learning-curve"],
   complexity: "intermediate"
+},
+{
+  id: "notebooklm",
+  name: "NotebookLM",
+  url: "https://notebooklm.google.com",
+  shortDescription: "AI research assistant that analyzes your documents, creates study guides, generates podcasts, and answers questions based on your sources",
+  supportType: ["research"],
+  category: ["research, knowledge, & learning platforms"],
+  aiDependency: "ai-only",
+  price: "free",
+  freeTierAccess: "full",
+  personaTypeMatch: ["research-focused", "academic-researcher", "knowledge-manager", "student", "conversational-learner", "note-taker", "audio-learner"],
+  timePressure: "low",
+  strengths: ["Source-grounded AI", "Audio Overview podcasts", "Study guide generation", "Multi-source synthesis", "Citation tracking", "Google Drive integration", "summarization", "note-taking"],
+  weaknesses: ["Google account required", "Limited to uploaded sources", "No real-time web search", "Privacy concerns"],
+  complexity: "beginner"
 }
 
 ];

@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Analytics Reference Guide - Universe of Tools Persona Quest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -24,7 +27,6 @@
             margin: 0 auto;
             background: linear-gradient(180deg, #fff5f7 0%, #fef6fb 100%);
             border-radius: 20px;
-            box-shadow: 0 15px 60px rgba(230, 150, 230, 0.4);
             overflow: hidden;
             border: 3px solid rgba(255, 182, 243, 0.5);
         }
@@ -37,6 +39,7 @@
         }
 
         header h1 {
+            font-family: 'Kalnia Glaze', serif;
             font-size: 2.5em;
             margin-bottom: 10px;
         }
@@ -57,7 +60,6 @@
             padding-bottom: 10px;
             border-bottom: 3px solid #f9a8d4;
             font-size: 2em;
-            text-shadow: 0 2px 4px rgba(240, 171, 252, 0.2);
         }
 
         h3 {
@@ -80,7 +82,6 @@
             border-radius: 15px;
             margin-bottom: 20px;
             border-left: 5px solid #f9a8d4;
-            box-shadow: 0 4px 15px rgba(249, 168, 212, 0.15);
         }
 
         .parameter-list {
@@ -110,7 +111,6 @@
             margin-right: 10px;
             font-weight: bold;
             min-width: 250px;
-            box-shadow: 0 2px 8px rgba(232, 121, 249, 0.3);
         }
 
         .parameter-desc {
@@ -124,7 +124,6 @@
             font-size: 0.85em;
             font-weight: bold;
             margin-left: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .high-priority {
@@ -133,8 +132,8 @@
         }
 
         .medium-priority {
-            background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%);
-            color: #7c2d12;
+            background: linear-gradient(135deg, #ffc4df 0%, #f1a8ff 100%);
+            color: #ffffff;
         }
 
         .low-priority {
@@ -143,18 +142,17 @@
         }
 
         .query-box {
-            background: linear-gradient(135deg, #4a1d4a 0%, #6b3d6b 100%);
-            color: #f0abfc;
+            background: linear-gradient(135deg, #fff0f9 0%, #fef3fb 100%);
+            color: #7c3668;
             padding: 20px;
             border-radius: 12px;
             margin: 15px 0;
             font-family: 'Courier New', monospace;
-            border: 2px solid rgba(232, 121, 249, 0.3);
-            box-shadow: 0 4px 15px rgba(232, 121, 249, 0.2);
+            border: 2px solid #f9a8d4;
         }
 
         .query-title {
-            color: #fde68a;
+            color: #c084fc;
             font-weight: bold;
             margin-bottom: 10px;
             font-size: 1.1em;
@@ -166,15 +164,15 @@
         }
 
         .tip-box {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
+            background: linear-gradient(135deg, #fff5f0 0%, #ffe9e0 100%);
+            border-left: 5px solid #ffb89d;
             padding: 15px;
             margin: 20px 0;
             border-radius: 5px;
         }
 
         .tip-box strong {
-            color: #856404;
+            color: #b45309;
         }
 
         ol, ul {
@@ -188,20 +186,22 @@
         }
 
         .section-nav {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #ffe9f5 0%, #f8e9ff 100%);
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 30px;
+            border: 2px solid #f9a8d4;
         }
 
         .section-nav a {
-            color: #667eea;
+            color: #c084fc;
             text-decoration: none;
             font-weight: bold;
             margin-right: 20px;
         }
 
         .section-nav a:hover {
+            color: #d946ef;
             text-decoration: underline;
         }
 
@@ -211,8 +211,8 @@
         }
 
         footer {
-            background: #2d3436;
-            color: white;
+            background: linear-gradient(135deg, #ffd1f7 0%, #e8c5ff 100%);
+            color: #d946ef;
             text-align: center;
             padding: 20px;
             font-size: 0.9em;
@@ -231,7 +231,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>🌌 Google Analytics Reference Guide</h1>
+            <h1>Google Analytics Reference Guide</h1>
             <p>Universe of Tools Persona Quest - Custom Event Parameters & Analytics Queries</p>
         </header>
 
@@ -245,11 +245,11 @@
             </div>
 
             <!-- SAMPLE QUERIES SECTION -->
-            <h2 id="sample-queries"><span class="emoji">🔍</span>Sample Queries You Can Run</h2>
+            <h2 id="sample-queries"><span class="emoji">🌈</span>Sample Queries You Can Run</h2>
             <p>Once you have data in Google Analytics, try these queries in <strong>Explore</strong> mode:</p>
 
             <div class="query-box">
-                <div class="query-title">❓ "Which creature leads to the most tool clicks?"</div>
+                <div class="query-title">🦋 "Which creature leads to the most tool clicks?"</div>
                 <div class="query-details">
                     <strong>Dimensions:</strong> creature, tool_name<br>
                     <strong>Metrics:</strong> Event count<br>
@@ -258,7 +258,7 @@
             </div>
 
             <div class="query-box">
-                <div class="query-title">❓ "What's the completion rate?"</div>
+                <div class="query-title">🌺 "What's the completion rate?"</div>
                 <div class="query-details">
                     <strong>Compare counts of:</strong><br>
                     - question_answered (question_number = 1) [Quiz starts]<br>
@@ -268,7 +268,7 @@
             </div>
 
             <div class="query-box">
-                <div class="query-title">❓ "Which tools have the highest compatibility scores when clicked?"</div>
+                <div class="query-title">💖 "Which tools have the highest compatibility scores when clicked?"</div>
                 <div class="query-details">
                     <strong>Dimension:</strong> tool_name<br>
                     <strong>Metrics:</strong> Event count, Average of compatibility_percentage<br>
@@ -277,7 +277,7 @@
             </div>
 
             <div class="query-box">
-                <div class="query-title">❓ "Which planet is most popular?"</div>
+                <div class="query-title">🌷 "Which planet is most popular?"</div>
                 <div class="query-details">
                     <strong>Dimension:</strong> planet<br>
                     <strong>Metrics:</strong> Event count<br>
@@ -287,7 +287,7 @@
             </div>
 
             <div class="query-box">
-                <div class="query-title">❓ "Do users click position 1 or position 2 more?"</div>
+                <div class="query-title">🐰 "Do users click position 1 or position 2 more?"</div>
                 <div class="query-details">
                     <strong>Dimension:</strong> tool_rank<br>
                     <strong>Metrics:</strong> Event count<br>
@@ -297,7 +297,7 @@
             </div>
 
             <div class="query-box">
-                <div class="query-title">❓ "Where do users drop off in the quiz?"</div>
+                <div class="query-title">🦄 "Where do users drop off in the quiz?"</div>
                 <div class="query-details">
                     <strong>Dimension:</strong> question_number<br>
                     <strong>Metrics:</strong> Event count<br>
@@ -307,10 +307,10 @@
             </div>
 
             <!-- PARAMETERS BY EVENT TYPE SECTION -->
-            <h2 id="parameters-by-event"><span class="emoji">📊</span>Custom Parameters by Event Type</h2>
+            <h2 id="parameters-by-event"><span class="emoji">🌻</span>Custom Parameters by Event Type</h2>
 
             <div class="event-section">
-                <h3><span class="emoji">📝</span>question_answered Event</h3>
+                <h3><span class="emoji">🌼</span>question_answered Event</h3>
                 <p>Tracks when a user answers any question in the quiz</p>
                 <div class="parameter-list">
                     <div class="parameter-item">
@@ -333,7 +333,7 @@
             </div>
 
             <div class="event-section">
-                <h3><span class="emoji">🎉</span>quiz_completed Event</h3>
+                <h3><span class="emoji">💕</span>quiz_completed Event</h3>
                 <p>Tracks when a user finishes the entire quiz</p>
                 <div class="parameter-list">
                     <div class="parameter-item">
@@ -364,7 +364,7 @@
             </div>
 
             <div class="event-section">
-                <h3><span class="emoji">🔗</span>tool_clicked Event</h3>
+                <h3><span class="emoji">🐱</span>tool_clicked Event</h3>
                 <p>Tracks when a user clicks on a tool link</p>
                 <div class="parameter-list">
                     <div class="parameter-item">
@@ -395,7 +395,7 @@
             </div>
 
             <div class="event-section">
-                <h3><span class="emoji">🔄</span>quiz_restarted Event</h3>
+                <h3><span class="emoji">☁️</span>quiz_restarted Event</h3>
                 <p>Tracks when a user restarts the quiz</p>
                 <div class="parameter-list">
                     <div class="parameter-item">
@@ -414,7 +414,7 @@
             </div>
 
             <!-- ALL UNIQUE PARAMETERS SECTION -->
-            <h2 id="all-parameters"><span class="emoji">📋</span>All Unique Parameters (Alphabetical)</h2>
+            <h2 id="all-parameters"><span class="emoji">🌙</span>All Unique Parameters (Alphabetical)</h2>
             <p>Every parameter you can register as a custom dimension:</p>
 
             <div class="parameter-list">
@@ -497,10 +497,10 @@
             </div>
 
             <!-- PRIORITY LIST SECTION -->
-            <h2 id="priority-list"><span class="emoji">⭐</span>Recommended Custom Dimensions to Register</h2>
+            <h2 id="priority-list"><span class="emoji">✨</span>Recommended Custom Dimensions to Register</h2>
             <p>Prioritized list based on usefulness (you can register up to 50 in GA4):</p>
 
-            <h3><span class="emoji">🔥</span>High Priority (Most Useful)</h3>
+            <h3><span class="emoji">💝</span>High Priority (Most Useful)</h3>
             <div class="parameter-list">
                 <div class="parameter-item">
                     <span class="parameter-name">planet</span>
@@ -524,7 +524,7 @@
                 </div>
             </div>
 
-            <h3><span class="emoji">⚡</span>Medium Priority (Good Insights)</h3>
+            <h3><span class="emoji">🌟</span>Medium Priority (Good Insights)</h3>
             <div class="parameter-list">
                 <div class="parameter-item">
                     <span class="parameter-name">tool_rank</span>
@@ -553,7 +553,7 @@
                 </div>
             </div>
 
-            <h3><span class="emoji">💡</span>Low Priority (Nice to Have)</h3>
+            <h3><span class="emoji">🌱</span>Low Priority (Nice to Have)</h3>
             <div class="parameter-list">
                 <div class="parameter-item">
                     <span class="parameter-name">from_question</span>
@@ -573,10 +573,10 @@
             </div>
 
             <div class="tip-box">
-                <strong>💡 Pro Tip:</strong> Start by registering the 4 High Priority dimensions first. Once you have data flowing and start analyzing it, you can always add more dimensions based on what insights you want to dig deeper into!
+                <strong>🦋 Pro Tip:</strong> Start by registering the 4 High Priority dimensions first. Once you have data flowing and start analyzing it, you can always add more dimensions based on what insights you want to dig deeper into!
             </div>
 
-            <h2><span class="emoji">⚙️</span>How to Register Custom Dimensions</h2>
+            <h2><span class="emoji">🌺</span>How to Register Custom Dimensions</h2>
             <ol>
                 <li>Go to <strong>Admin</strong> (gear icon in bottom left of Google Analytics)</li>
                 <li>In the <strong>Property</strong> column, click <strong>Custom definitions</strong></li>
@@ -594,7 +594,7 @@
             </ol>
 
             <div class="tip-box">
-                <strong>⏰ Important:</strong> Custom dimensions can take 24-48 hours to start collecting data. Events sent BEFORE you create the dimension won't be retroactively updated, but all new events will include the dimension automatically.
+                <strong>💐 Important:</strong> Custom dimensions can take 24-48 hours to start collecting data. Events sent BEFORE you create the dimension won't be retroactively updated, but all new events will include the dimension automatically.
             </div>
         </div>
 
