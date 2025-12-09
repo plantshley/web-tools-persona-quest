@@ -220,7 +220,7 @@ export const strengthSynonyms = {
 const branchingQuestions = {
 	Visualis: [
 		{
-			text: "The Diagramming Druid, who sketches dazzining diagrams and flowcharts in the stardust.",
+			text: "The Diagramming Druid, who sketches dazzling diagrams and flowcharts in the stardust.",
 			scores: {
 				"strengths-diagramming": 5,
 				"category-visualization & design": 2
