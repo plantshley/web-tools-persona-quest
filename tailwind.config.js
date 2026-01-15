@@ -24,6 +24,9 @@ module.exports = {
         'reveal-down': 'reveal-down 0.6s ease-out',
         'pop-blob': 'pop-blob 5s infinite',
         'fade-in': 'fade-in 0.8s ease-out',
+        'slide-in-left': 'slide-in-left 1.8s cubic-bezier(0.25, 0.1, 0.25, 1)',
+        'slide-in-right': 'slide-in-right 1.8s cubic-bezier(0.25, 0.1, 0.25, 1)',
+        'typewriter': 'typewriter 0.1s ease-out forwards',
       },
       keyframes: {
         float: {
@@ -85,6 +88,18 @@ module.exports = {
           '100%': { transform: 'scale(1)' },
         },
         'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'slide-in-left': {
+          '0%': { opacity: '0', transform: 'translateX(-30px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        'slide-in-right': {
+          '0%': { opacity: '0', transform: 'translateX(30px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        'typewriter': {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },

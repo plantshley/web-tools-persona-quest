@@ -2748,28 +2748,17 @@ const PersonalityQuizApp = () => {
 				<div className="max-w-5xl w-full mx-auto z-10 px-4">
 					<div className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-10">
 									<h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 font-silkscreen px-4 mx-auto" style={{ maxWidth: '100%' }}>
-										{windowWidth >= 640 ? (
-											<>
-												<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full">
-													<WaveReveal text="Universe of Tools" mode="letter" delay={0.05} duration={0.6} />
-												</div>
-												<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full">
-													<WaveReveal text="Persona Quest" mode="letter" delay={0.05} duration={0.6} />
-												</div>
-											</>
-										) : (
-											<>
-												<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full animate-fade-in">
-													Universe of Tools
-												</div>
-												<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full animate-fade-in" style={{ animationDelay: '0.3s' }}>
-													Persona Quest
-												</div>
-											</>
-										)}
+										<>
+											<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full animate-slide-in-left">
+												Universe of Tools
+											</div>
+											<div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent leading-tight text-center inline-block w-full animate-slide-in-right" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
+												Persona Quest
+											</div>
+										</>
 									</h1>
-						<p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto font-atkinson px-2">
-							<span className="italic text-xs sm:text-sm">Beam through the glittering universe of web and AI tools to discover the perfect ones for your creative & academic adventures!</span>
+						<p className="text-sm sm:text-xs md:text-lg text-gray-300 max-w-2xl mx-auto font-atkinson px-2 text-center italic animate-fade-in" style={{ animationDuration: '1.5s', animationDelay: '0.5s', animationFillMode: 'both' }}>
+							Beam through the glittering universe of web and AI tools to discover<br className="hidden md:block" /> the perfect ones for your creative & academic adventures! 💫
 						</p>
 					</div>
 					<div className="flex flex-col items-center">
