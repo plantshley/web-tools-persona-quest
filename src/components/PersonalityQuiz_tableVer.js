@@ -2749,8 +2749,9 @@ const PersonalityQuizApp = () => {
 				{/* Download table callout - only show on opening page */}
 				{currentQuestion === 0 && !showResults && (
 					<a
-						href={`${process.env.PUBLIC_URL}/Web_Tools_Table.xlsx`}
-						download="Web_Tools_Table.xlsx"
+						href="https://colostate-my.sharepoint.com/:x:/g/personal/fairykun_colostate_edu/IQCIeNPvbmmvRKzCfW4Vc2LJAVcY9hl9FbL-4iiFSegdoxI?e=cCrCEd"
+						target="_blank"
+						rel="noopener noreferrer"
 						className="
 							fixed z-50
 							bottom-4 left-1/2 -translate-x-1/2
@@ -2767,7 +2768,7 @@ const PersonalityQuizApp = () => {
 							whitespace-nowrap
 						"
 					>
-						Prefer an excel sheet? Download here!🌠
+						Prefer an excel sheet? View here!🌠
 					</a>
 				)}
 

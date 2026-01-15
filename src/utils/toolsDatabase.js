@@ -1890,7 +1890,7 @@ export const toolsDatabase = [
   aiDependency: "ai-only",
   price: "freemium",
   freeTierAccess: "somewhat-limited",
-  personaTypeMatch: ["creative-expresser", "experimental", "early-adopter", "visual-learner", "ai-enthusiast", "prompt-based-user", "rapid-prototyper", "interactive-creator"],
+  personaTypeMatch: ["sharer", "creative-expresser", "experimental", "early-adopter", "visual-learner", "ai-enthusiast", "prompt-based-user", "rapid-prototyper", "interactive-creator"],
   timePressure: "low",
   strengths: ["Persistent environments", "VR compatible", "Chisel editor", "Export to Gaussian splats and meshes", "game-design", "simulations"],
   weaknesses: ["New platform", "Processing time for high-fidelity", "Limited world expansion"],
