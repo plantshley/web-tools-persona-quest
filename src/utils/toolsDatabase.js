@@ -1880,6 +1880,22 @@ export const toolsDatabase = [
       "Requires good lighting"],
     complexity: "beginner"
 },
+{
+  id: "marble",
+  name: "Marble",
+  url: "https://marble.worldlabs.ai",
+  shortDescription: "Generate immersive 3D worlds from text, images, or videos using AI world models",
+  supportType: "3d",
+  category: "3D modeling, spatial design, & video games",
+  aiDependency: "ai-only",
+  price: "freemium",
+  freeTierAccess: "somewhat-limited",
+  personaTypeMatch: ["creative-expresser", "experimental", "early-adopter", "visual-learner", "ai-enthusiast", "prompt-based-user", "rapid-prototyper", "interactive-creator"],
+  timePressure: "low",
+  strengths: ["Persistent environments", "VR compatible", "Chisel editor", "Export to Gaussian splats and meshes", "game-design", "simulations"],
+  weaknesses: ["New platform", "Processing time for high-fidelity", "Limited world expansion"],
+  complexity: "beginner"
+},
 // Research, Knowledge, & Learning Platforms Tools
 {
   id: "notion",

@@ -736,7 +736,7 @@ const baseQuizQuestions = [
 	{
 		id: 4,
 		icon: sparkIcon,
-		question: "You land with a an explosion of sparkling light! Without sparing any time to recover, the creature unveils what looks to be a blueprint for something and asks you to get started. How do you react?",
+		question: "You land with an explosion of sparkling light! Without sparing any time to recover, the creature unveils what looks to be a blueprint for something and asks you to get started. How do you react?",
 		options: [
 			{ 
 				text: "I drift to an empty cloud of stardust to work alone, I'm most productive that way.", 
