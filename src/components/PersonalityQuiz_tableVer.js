@@ -2745,6 +2745,32 @@ const PersonalityQuizApp = () => {
 				overflowX: 'hidden'
 			}}>
 				<StarField />
+
+				{/* Download table callout - only show on opening page */}
+				{currentQuestion === 0 && !showResults && (
+					<a
+						href={`${process.env.PUBLIC_URL}/Web_Tools_Table.xlsx`}
+						download="Web_Tools_Table.xlsx"
+						className="
+							fixed z-50
+							bottom-4 left-1/2 -translate-x-1/2
+							md:bottom-auto md:top-4 md:right-4 md:left-auto md:translate-x-0
+							px-3 py-1.5
+							text-xs text-gray-400 hover:text-purple-300
+							bg-gray-900/60 hover:bg-gray-800/80
+							backdrop-blur-sm
+							border border-gray-700/50 hover:border-purple-400/50
+							rounded-full
+							transition-all duration-300
+							font-atkinson
+							opacity-70 hover:opacity-100
+							whitespace-nowrap
+						"
+					>
+						Prefer an excel sheet? Download here!🌠
+					</a>
+				)}
+
 				<div className="max-w-5xl w-full mx-auto z-10 px-4">
 					<div className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-10">
 									<h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 font-silkscreen px-4 mx-auto" style={{ maxWidth: '100%' }}>
